@@ -1,0 +1,19 @@
+<Project>
+  <!-- Shared project properties for all projects -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <UserSecretsId>bcc2381b-1789-43f5-83db-7d0acef035cf</UserSecretsId>
+    <LangVersion>latest</LangVersion>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <NoWarn>CS1591;S3993;IDE0055;CA1515;IDE0011;IDE0061;IDE0022;IDE0058;IDE1006;IDE0021;IDE0046;CA1812;CA1308;NETSDK1057</NoWarn>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <RestoreLockedMode Condition="'$(TF_BUILD)' == True">true</RestoreLockedMode>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+  </PropertyGroup>
+  <ItemGroup>
+    <!--<Using Include="System.Text" />-->
+  </ItemGroup>
+</Project>

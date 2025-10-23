@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Sdk Name="Aspire.AppHost.Sdk" Version="9.5.0" />
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Api\Api.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.AppHost" />
+    <PackageReference Include="Aspire.Hosting.Docker" />
+  </ItemGroup>
+  <!-- Restore dotnet tools and git hooks locally, but not in DevOps -->
+  <Target Name="husky" BeforeTargets="Restore;CollectPackageReferences" Condition="'$(TF_BUILD)' != True">
+    <Exec Command="dotnet tool restore" StandardOutputImportance="Low" StandardErrorImportance="High" />
+    <Exec Command="dotnet husky install" StandardOutputImportance="Low" StandardErrorImportance="High" WorkingDirectory=".." EnvironmentVariables="DOTNET_ROLL_FORWARD=LatestMajor" />
+  </Target>
+</Project>

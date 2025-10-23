@@ -1,0 +1,24 @@
+@base = http://localhost:5317
+
+GET {{base}}/events
+Accept: application/json
+
+###
+
+GET {{base}}/events?threshold=0.14
+Accept: application/json
+
+###
+
+GET {{base}}/events?threshold=0.14&maxGap=30
+Accept: application/json
+
+###
+
+GET {{base}}/events?threshold=0.14&maxGap=30&minDuration=10
+Accept: application/json
+
+### Invalid request
+
+GET {{base}}/events?threshold=-0.1&maxGap=-1&minDuration=-1
+Accept: application/json

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://alirezanet.github.io/Husky.Net/schema.json",
+  "tasks": [
+    {
+      "name": "Format C# files",
+      "command": "dotnet",
+      "args": [ "csharpier", "format", "${staged}" ],
+      "group": "pre-commit",
+      "include": [ "**/*.cs" ]
+    },
+    {
+      "name": "Scan staged files for credentials",
+      "command": "docker",
+      "args": [ "run", "--name", "credential-scan", "--rm", "-v", ".:/app", "zricethezav/gitleaks:v8.28.0", "git", "--pre-commit", "--staged", "/app", "-v" ],
+      "group": "pre-commit"
+    },
+    {
+      "name": "dotnet test",
+      "command": "dotnet",
+      "args": [ "test", "--", "--filter-not-trait", "Category=Integration" ],
+      "group": "pre-push"
+    }
+  ]
+}
