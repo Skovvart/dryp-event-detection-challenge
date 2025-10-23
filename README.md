@@ -5,6 +5,7 @@ https://github.com/DrypDevelopment/event-detection-challenge submission
 - [Api/EventDetector.cs#L65](./Api/EventDetector.cs#L65) notes some ambiguity about the sample end times.
 
 > Be explicit about inclusive/exclusive end time — note it in your README and test against it.
+
 Not entirely sure what was meant by this, but primarily [EventDetectorTests.cs#L102](./Tests/EventDetectorTests.cs#L102) lists the expected interpretation of minDuration and maxGap.
 
 ## Prerequisites
